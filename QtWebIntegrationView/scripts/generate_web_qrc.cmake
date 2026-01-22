@@ -1,0 +1,21 @@
+if(NOT DEFINED WEB_ROOT)
+  message(FATAL_ERROR "WEB_ROOT not set")
+endif()
+if(NOT DEFINED OUTPUT)
+  message(FATAL_ERROR "OUTPUT not set")
+endif()
+
+file(GLOB_RECURSE WEB_FILES RELATIVE "${WEB_ROOT}" "${WEB_ROOT}/*")
+
+set(QRC_CONTENT "<RCC>\n  <qresource prefix=\"/web\">\n")
+foreach(WEB_FILE IN LISTS WEB_FILES)
+  if(WEB_FILE MATCHES "\\.DS_Store$")
+    continue()
+  endif()
+  set(ABS_PATH "${WEB_ROOT}/${WEB_FILE}")
+  file(TO_CMAKE_PATH "${WEB_FILE}" WEB_FILE_NORMALIZED)
+  string(APPEND QRC_CONTENT "    <file alias=\"${WEB_FILE_NORMALIZED}\">${ABS_PATH}</file>\n")
+endforeach()
+string(APPEND QRC_CONTENT "  </qresource>\n</RCC>\n")
+
+file(WRITE "${OUTPUT}" "${QRC_CONTENT}")

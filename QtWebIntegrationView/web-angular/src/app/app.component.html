@@ -1,0 +1,49 @@
+<div class="app-shell">
+  <mat-toolbar color="primary">
+    <span>WebHost Material Demo</span>
+    <span class="spacer"></span>
+    <button mat-button (click)="sendData()">sendData()</button>
+  </mat-toolbar>
+
+  <div class="content">
+    <div class="content-inner">
+      <mat-card>
+        <mat-card-title>HostApi Status</mat-card-title>
+        <mat-card-subtitle>{{ status }}</mat-card-subtitle>
+        <mat-card-content>
+          <p>
+            This panel is rendered with Angular Material. It waits for
+            <strong>HostApiReady</strong> and then issues calls through the
+            generated ExampleService.
+          </p>
+
+          <div class="actions">
+            <button mat-raised-button color="primary" (click)="setOutput()">setOutput()</button>
+            <button mat-stroked-button color="primary" (click)="getInput()">getInput()</button>
+            <button mat-stroked-button color="accent" (click)="exampleEcho()">example.echo()</button>
+          </div>
+
+          <mat-form-field appearance="outline" style="margin-top: 16px; width: 100%;">
+            <mat-label>Status message</mat-label>
+            <input matInput [(ngModel)]="statusInput" placeholder="Optional status text" />
+            <button mat-button matSuffix color="accent" (click)="exampleStatus()">Send</button>
+          </mat-form-field>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card>
+        <mat-card-title>Event Log</mat-card-title>
+        <mat-card-content>
+          <mat-list class="log-list">
+            <mat-list-item *ngFor="let line of logLines">
+              {{ line }}
+            </mat-list-item>
+            <mat-list-item *ngIf="!logLines.length">
+              No events yet.
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

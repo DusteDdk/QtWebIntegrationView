@@ -1,0 +1,13 @@
+.spacer {
+  flex: 1;
+}
+
+mat-card-title {
+  font-size: 20px;
+}
+
+mat-card-content p {
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: rgba(0, 0, 0, 0.68);
+}

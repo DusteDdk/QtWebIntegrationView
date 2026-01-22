@@ -1,0 +1,47 @@
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+:root {
+  color-scheme: light;
+  font-family: "Roboto", "Helvetica Neue", sans-serif;
+  background: var(--host-window-color, #f4f5f8);
+  color: #1f1f1f;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--host-window-color, #f4f5f8);
+}
+
+.app-shell {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  padding: 32px 16px 48px;
+}
+
+.content-inner {
+  width: min(920px, 100%);
+  display: grid;
+  gap: 16px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.log-list {
+  max-height: 220px;
+  overflow: auto;
+}
